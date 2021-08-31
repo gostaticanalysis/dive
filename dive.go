@@ -122,7 +122,7 @@ func checkManyReturns(pass *analysis.Pass, body *ast.BlockStmt) {
 	var count int
 	ast.Inspect(body, func(n ast.Node) bool {
 		switch n.(type) {
-		case *ast.FuncLit:
+		case *ast.FuncLit, *ast.SelectStmt, *ast.SwitchStmt, *ast.TypeSwitchStmt:
 			return false
 		case *ast.ReturnStmt:
 			count++
